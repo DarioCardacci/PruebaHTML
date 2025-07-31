@@ -22,29 +22,32 @@ async function obtenerPalabra(longitud) {
 }
 
 function crearTeclado() {
-    const letras = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ'.split('');
+    const filas = [
+        'A B C D E F G H I J K L M',
+        'N Ñ O P Q R S T U V',
+        'W X Y Z Á É Í Ó Ú'
+    ];
     const tecladoDiv = document.getElementById('teclado');
     tecladoDiv.innerHTML = '';
-    letras.forEach(letra => {
-        const btn = document.createElement('button');
-        btn.textContent = letra;
-        btn.className = 'tecla';
-        btn.onclick = function() {
-            if (!btn.disabled && juegoIniciado) {
-                adivinarLetraTeclado(letra.toLowerCase());
-                btn.disabled = true;
-                btn.style.opacity = 0.5;
-            }
-        };
-        btn.style.margin = '2px';
-        btn.style.width = '36px';
-        btn.style.height = '36px';
-        btn.style.fontSize = '1em';
-        btn.style.borderRadius = '6px';
-        btn.style.border = '1px solid #b2bec3';
-        btn.style.background = '#e3f0fa';
-        btn.style.cursor = 'pointer';
-        tecladoDiv.appendChild(btn);
+    filas.forEach(fila => {
+        const filaDiv = document.createElement('div');
+        filaDiv.style.display = 'flex';
+        filaDiv.style.justifyContent = 'center';
+        filaDiv.style.marginBottom = '3px';
+        fila.split(' ').forEach(letra => {
+            const btn = document.createElement('button');
+            btn.textContent = letra;
+            btn.className = 'clave';
+            btn.onclick = function() {
+                if (!btn.disabled && juegoIniciado) {
+                    adivinarLetraTeclado(letra.toLowerCase());
+                    btn.disabled = true;
+                    btn.style.opacity = 0.5;
+                }
+            };
+            filaDiv.appendChild(btn);
+        });
+        tecladoDiv.appendChild(filaDiv);
     });
 }
 
