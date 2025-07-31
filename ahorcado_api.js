@@ -86,12 +86,12 @@ function adivinarLetra() {
     if (!acierto) intentosRestantes--;
     if (intentosRestantes === 0) {
         document.getElementById("mensaje").textContent = `¡Perdiste! La palabra era: ${palabraSecreta}`;
-        document.getElementById("letra").disabled = true;
         juegoIniciado = false;
+        deshabilitarTeclado();
     } else if (!palabraAdivinada.includes("_")) {
         document.getElementById("mensaje").textContent = "¡Ganaste!";
-        document.getElementById("letra").disabled = true;
         juegoIniciado = false;
+        deshabilitarTeclado();
     }
     actualizarPantalla();
 }
