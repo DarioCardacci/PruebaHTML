@@ -62,6 +62,27 @@
             font-weight: 500;
             color: #333;
         }
+        #teclado {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .clave {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            background: #0a4d68;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .clave:hover {
+            background: #145da0;
+        }
     </style>
 </head>
 <body>
@@ -78,8 +99,9 @@
         <button onclick="iniciarJuego()">Iniciar juego</button>
         <p id="palabra">_ _ _ _ _</p>
         <p>Intentos restantes: <span id="intentos">6</span></p>
-        <input type="text" id="letra" maxlength="1" placeholder="Ingresa una letra" disabled>
-        <button onclick="adivinarLetra()">Adivinar</button>
+        <input type="text" id="letra" maxlength="1" placeholder="Ingresa una letra" disabled style="display:none;">
+        <div id="teclado"></div>
+        <button onclick="adivinarLetra()" style="display:none;">Adivinar</button>
         <p id="mensaje"></p>
     </div>
     <script src="ahorcado_api.js"></script>
